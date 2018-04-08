@@ -1,7 +1,7 @@
 vim技巧
 
 
-##读取Shell命令相关
+## 读取Shell命令相关
 【:r!date】 插入日期
 
 上面这个命令，:r 是:read的缩写，!是表明要运行一个shell命令，意思是我要把shell命令的输出读到vim里来。
