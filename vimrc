@@ -23,28 +23,56 @@ syntax on
 
 let mapleader=" "
 nmap <leader>w    :w!<cr>
+vmap <leader>w    :w!<cr>
 nmap <leader>q    :q!<cr>
+vmap <leader>q    :q!<cr>
 nmap <leader>x    :x!<cr>
+vmap <leader>x    :x!<cr>
 nmap <leader>a    A
+vmap <leader>a    A
 nmap <leader>v    V
-nmap <leader>id    :read !date +\%Y-\%m-\%d<CR>
+vmap <leader>v    V
+nmap <leader>D    :read !date +\%Y-\%m-\%d<CR>
+nmap <leader>i  I
+nmap <leader>b  B
+nmap <leader>e  E
+vmap <leader>i  I
+vmap <leader>b  B
+noremap n nzz
+noremap N Nzz
 
 nmap <leader>r    <C-r>
+nmap <leader>u    <C-w>k
+nmap <leader>y    <C-w>j
 nmap <leader>l    <C-w>l
 nmap <leader>h    <C-w>h
-nmap <leader>b    <C-w>B
-nnoremap <leader>k    <C-o>
-nnoremap <leader>j    <C-i> 
+nmap <leader>m    :!clear: make<cr>
+
+vnoremap  K  k 
+vnoremap J   j 
+nnoremap  K  k 
+nnoremap J   j 
+nnoremap <leader>k    <C-i>zz
+nnoremap <leader>j    <C-o>zz
+vnoremap <leader>k    <C-i>zz
+vnoremap <leader>j    <C-o>zz
 nmap <leader>o    :NERDTreeToggle<CR>
 nmap <leader>p    :TagbarToggle<CR>
 
-nmap fj    <C-f>zz
-nmap fk    <C-b>zz
-nmap gk    {
-nmap gj    }
+nmap fj    <C-f>
+nmap fk    <C-b>
+nmap gk    {zz
+nmap gj    }zz
+vmap fj    <C-f>zz
+vmap fk    <C-b>zz
+vmap gk    {zz
+vmap gj    }zz
 
-nmap lh ^
-nmap le $
+"nmap <leader><leader>h ^
+"nmap <leader><leader>m $
+"vmap <leader><leader>h ^
+"vmap <leader><leader>m $
+
 "nmap <leader>h H
 "nmap <leader>l L
 "nmap <leader>m M
@@ -55,7 +83,8 @@ nmap <leader>,v :e ~/.vimrc
 " 译释：在normal模式下，先后按下 ,s 两个键执行_vimrc，而 ,v 则是编辑_vimrc
 map Y y$
 
-nnoremap <CR> G
+nnoremap <CR> Gzz
+vnoremap <CR> Gzz
 nnoremap <BS> gg
 
 
@@ -68,7 +97,7 @@ nnoremap <BS> gg
 vmap <Leader>cw cW
 vmap <Leader>dw dW
 
-nmap <Leader><Leader> *
+"nmap <Leader><Leader> *
 nmap gw *
 
 vnoremap <silent> y y`]
@@ -77,7 +106,6 @@ nnoremap <silent> p p`]
 
 
 nnoremap <BS> gg
-nnoremap <leader>ls :E<CR>
 nmap gr <Esc>:! clear;go run % <CR>
 nmap gb <Esc>:! clear;go build % <CR>
 nmap gi <Esc>:! clear;go install % <CR>
@@ -143,7 +171,7 @@ set foldmethod=syntax
 set nofoldenable
 
 
-inoremap { {<cr><cr>}<ESC>ki    
+inoremap {<cr> {<cr><cr>}<ESC>ki    
 "noremap ;q <esc>:q!<cr>
 "noremap ;w <esc>:w!<cr>
 "noremap ;x <esc>:x!<cr>
@@ -173,8 +201,8 @@ colorscheme desert "配色沙漠 还有: torte, solarized, molokai, phd, ro
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 选中区块
 Bundle 'terryma/vim-expand-region'
-vmap <leader><leader> <Plug>(expand_region_expand)
-vmap <leader>s <Plug>(expand_region_shrink)
+"vmap <leader><leader> <Plug>(expand_region_expand)
+"vmap <leader>s <Plug>(expand_region_shrink)
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -191,9 +219,74 @@ set undofile
 "nnoremap <tab> %
 "vnoremap <tab> %
 
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <f12> <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap  <C-w><C-v><C-l>:e $MYVIMRC<cr>
 inoremap jj <ESC> 
 "nnoremap t f 
 
 "nmap <leader>n [n
 
+noremap yy "zyy
+noremap y "zy
+noremap p "zp
+noremap d "zd
+noremap dd "zdd
+noremap x "zx
+
+noremap <leader>cn :cn<cr>
+noremap <leader>cp :cp<cr>
+noremap <leader>n :cn<cr>
+
+"## 让配置变更立即生效
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+set statusline=%F\ [%{&fenc}\ %{&ff}\ L%l/%L\ C%c]\ %=%{strftime('%Y-%m-%d\ %H:%M')}
+set laststatus=2
+
+
+" for easy motions
+
+let g:EasyMotion_smartcase = 1
+"let g:EasyMotion_startofline = 0 " keep cursor colum when JK motion
+map <Leader><leader>h <Plug>(easymotion-linebackward)
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><leader>l <Plug>(easymotion-lineforward)
+" 重复上一次操作, 类似repeat插件, 很强大
+map <Leader><leader>. <Plug>(easymotion-repeat)
+nnoremap <silent> <leader>. :cd %:p:h<CR>
+
+nnoremap gp `[v`]
+map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+
+map <leader>sp :set nonu<cr> :set norelativenumber<cr> :set mouse-=a<cr><cr>
+map <leader>spn :set nu<cr> :set relativenumber<cr> :set mouse=<cr>
+
+"2018-05-10 vim突破
+imap ;dw <esc>ldwi
+imap ;de <esc>ldei
+imap ;db <esc>ldbi
+imap ;b <esc>bi
+imap ;u <esc>ui
+imap ;e <esc>ea
+imap ;p <esc>$a
+imap ;u <esc>^i
+imap ;j <esc><Plug>(easymotion-)
+imap ;k <esc><Plug><Plug>(easymotion-b)
+nmap j <Plug>(easymotion-w)
+nmap k <Plug>(easymotion-b)
+vmap j <Plug>(easymotion-j)
+vmap k <Plug>(easymotion-k)
+nmap dq d^
+nmap du d^
+nmap dp d$
+vnoremap  <left>   <C-i>zz
+vnoremap <right>    <C-o>zz
+nnoremap  <left>   <C-i>zz
+nnoremap <right>    <C-o>zz
+noremap  <left>   <C-i>zz
+noremap <right>    <C-o>zz
+map <up>   g; 
+map <down> g,
+nmap gp $
+nmap gu ^
