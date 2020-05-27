@@ -1,0 +1,168 @@
+filetype on                   "检测文件类型
+filetype indent on           "针对不同的文件类型采用不同的缩进格式
+filetype plugin on           "允许插件
+filetype plugin indent on     "启动自动补全
+
+set autoread
+set ignorecase
+set smartcase
+set incsearch
+set ai
+set nu
+"set relativenumber
+set ts=4
+set expandtab
+set mouse=a
+set ruler
+set smartindent
+set autoindent
+set nocompatible
+set backspace=indent,eol,start
+syntax on
+
+
+let mapleader=" "
+nmap <leader>w    :w!<cr>
+vmap <leader>w    :w!<cr>
+nmap <leader>q    :q!<cr>
+vmap <leader>q    :q!<cr>
+nmap <leader>x    :x!<cr>
+vmap <leader>x    :x!<cr>
+nmap <leader>a    A
+vmap <leader>a    A
+nmap <leader>v    V
+vmap <leader>v    V
+nmap <leader>D    :read !date +\%Y-\%m-\%d<CR>
+nmap <leader>i  I
+nmap <leader>b  B
+nmap <leader>e  E
+vmap <leader>i  I
+vmap <leader>b  B
+noremap n nzz
+noremap N Nzz
+
+nmap <leader>r    <C-r>
+nmap <leader>u    <C-w>k
+nmap <leader>y    <C-w>j
+nmap <leader>]    <C-w>l
+nmap <leader>[    <C-w>h
+nmap <leader>m    :!clear<cr> : make<cr>
+
+vnoremap  K  k
+vnoremap J   j
+nnoremap  K  k
+nnoremap J   j
+nnoremap <leader>k    <C-i>zz
+nnoremap <leader>j    <C-o>zz
+vnoremap <leader>k    <C-i>zz
+vnoremap <leader>j    <C-o>zz
+nmap <leader>o    :NERDTreeToggle<CR>
+nmap <leader>p    :TagbarToggle<CR>
+
+nmap fj    <C-f>
+nmap fk    <C-b>
+nmap gk    {zz
+nmap gj    }zz
+vmap fj    <C-f>
+vmap fk    <C-b>
+vmap gk    {zz
+vmap gj    }zz
+
+"nmap <leader><leader>h ^
+"nmap <leader><leader>m $
+"vmap <leader><leader>h ^
+"vmap <leader><leader>m $
+
+"nmap <leader>h H
+"nmap <leader>l L
+"nmap <leader>m M
+
+" 使更新 _vimrc 更容易
+nmap <leader>,s :source ~/.vimrc<CR>
+nmap <leader>,v :e ~/.vimrc
+" 译释：在normal模式下，先后按下 ,s 两个键执行_vimrc，而 ,v 则是编辑_vimrc
+map Y y$
+
+nnoremap <CR> Gzz
+vnoremap <CR> Gzz
+nnoremap <BS> gg
+
+
+"vmap <Leader>y "+y
+"vmap <Leader>d "+d
+"nmap <Leader>p "+p
+"nmap <Leader>P "+P
+"vmap <Leader>p "+p
+"vmap <Leader>P "+P
+vmap <Leader>cw cW
+vmap <Leader>dw dW
+
+"nmap <Leader><Leader> *
+nmap gw *
+
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+
+nnoremap <BS> gg
+nmap gr <Esc>:! clear;go run % <CR>
+nmap gb <Esc>:! clear;go build % <CR>
+nmap gi <Esc>:! clear;go install % <CR>
+nmap gf <Esc>:! clear;gofmt -w  % <CR>
+
+"2018-05-10 vim突破
+imap ;dw <esc>ldwi
+imap ;de <esc>ldei
+imap ;db <esc>ldbi
+imap ;b <esc>bi
+imap ;B <esc>Bi
+inoremap ;z <esc>ui
+inoremap ;u <esc>u
+inoremap ;r    <esc><C-r>i
+imap ;e <esc>ea
+imap ;W <esc>:w
+imap jj <esc>
+imap ;E <esc>Ea
+imap ;f <esc>$a
+imap ;a <esc>^i
+imap ;p <esc>pa
+imap ;o <esc>o
+imap ;O <esc>O
+"imap ;j <esc><Plug>(easymotion-w)
+"imap ;k <esc><Plug>(easymotion-b)
+"nmap k <Plug>(easymotion-w)
+"nmap j <Plug>(easymotion-b)
+"vmap k <Plug>(easymotion-j)
+"vmap j <Plug>(easymotion-k)
+"nmap j <Plug>(easymotion-w)
+"nmap k <Plug>(easymotion-b)
+"nmap <leader>h <Plug>(easymotion-j)
+"nmap <leader>l <Plug>(easymotion-k)
+"vmap j <Plug>(easymotion-j)
+"vmap k <Plug>(easymotion-k)
+nmap yq y^
+nmap yu y^
+nmap dq d^
+nmap du d^
+nmap dp d$
+nmap cp c$
+nmap cu c^
+vnoremap  <left>   <C-o>zz
+vnoremap <right>    <C-i>zz
+nnoremap  <left>   <C-o>zz
+nnoremap <right>    <C-i>zz
+noremap  <left>   <C-o>zz
+noremap <right>    <C-i>zz
+map <up>   g;
+map <down> g,
+nmap gp $
+nmap gu ^
+
+nmap j :action KJumpAction.Word0<cr>
+nmap k :action KJumpAction.Word0<cr>
+nmap <leader>l :action KJumpAction.Line<cr>
+
+"set surround
+
+".ideavimrc
