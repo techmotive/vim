@@ -121,7 +121,7 @@ inoremap ;z <esc>ui
 inoremap ;u <esc>u
 inoremap ;r    <esc><C-r>i
 imap ;e <esc>ea
-imap ;W <esc>:w
+imap ;w <esc>:w!<cr>
 imap jj <esc>
 imap ;E <esc>Ea
 imap ;f <esc>$a
@@ -159,6 +159,8 @@ map <down> g,
 nmap gp $
 nmap gu ^
 
+imap ;j <esc> :action KJumpAction.Word0<cr>
+imap ;k <esc> :action KJumpAction.Word0<cr>
 nmap j :action KJumpAction.Word0<cr>
 nmap k :action KJumpAction.Word0<cr>
 nmap <leader>l :action KJumpAction.Line<cr>
