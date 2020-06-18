@@ -1,92 +1,38 @@
-filetype on                   "检测文件类型
-filetype indent on           "针对不同的文件类型采用不同的缩进格式
-filetype plugin on           "允许插件
-filetype plugin indent on     "启动自动补全
+" .ideavimrc
 
-set autoread
-set ignorecase
-set smartcase
-set incsearch
-set ai
-set nu
-"set relativenumber
-set ts=4
-set expandtab
-set mouse=a
-set ruler
-set smartindent
-set autoindent
-set nocompatible
-set backspace=indent,eol,start
-syntax on
+" import common config
+source ~/.commonvimrc
 
+"easymotion for ideavim
+set easymotion 
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
 
-let mapleader=" "
-nmap <leader>w    :w!<cr>
-vmap <leader>w    :w!<cr>
-nmap <leader>q    :q!<cr>
-vmap <leader>q    :q!<cr>
-nmap <leader>x    :x!<cr>
-vmap <leader>x    :x!<cr>
-nmap <leader>a    A
-vmap <leader>a    A
-nmap <leader>v    V
-vmap <leader>v    V
-nmap <leader>D    :read !date +\%Y-\%m-\%d<CR>
-nmap <leader>i  I
-nmap <leader>b  B
-nmap <leader>e  E
-vmap <leader>i  I
-vmap <leader>b  B
-noremap n nzz
-noremap N Nzz
+"kjump for ideavim
+imap ;j <esc>:action KJumpAction.Word0<cr>
+imap ;k <esc>:action KJumpAction.Word0<cr>
+"vmap j :action KJumpAction.Word0<cr>
+"vmap k :action KJumpAction.Word0<cr>
+"nmap m  :action KJumpAction.Word0<cr>
+nmap j  :action KJumpAction.Word0<cr>
+nmap k  :action KJumpAction.Word0<cr>
+nmap <leader>l :action KJumpAction.Line<cr>
 
-nmap <leader>r    <C-r>
-nmap <leader>u    <C-w>k
-nmap <leader>y    <C-w>j
-nmap <leader>]    <C-w>l
-nmap <leader>[    <C-w>h
-nmap <leader>m    :!clear<cr> : make<cr>
+"just for ideavim
+set surround
 
-vnoremap  K  k
-vnoremap J   j
-nnoremap  K  k
-nnoremap J   j
-nnoremap <leader>k    <C-i>zz
-nnoremap <leader>j    <C-o>zz
-vnoremap <leader>k    <C-i>zz
-vnoremap <leader>j    <C-o>zz
-nmap <leader>o    :NERDTreeToggle<CR>
-nmap <leader>p    :TagbarToggle<CR>
+" not sure about this
+"noremap yy "zyy
+"noremap y "zy
+"noremap p "zp
+"noremap d "zd
+"noremap dd "zdd
+"noremap x "zx
 
-nmap fj    <C-f>
-nmap fk    <C-b>
-nmap gk    {zz
-nmap gj    }zz
-vmap fj    <C-f>
-vmap fk    <C-b>
-vmap gk    {zz
-vmap gj    }zz
-
-"nmap <leader><leader>h ^
-"nmap <leader><leader>m $
-"vmap <leader><leader>h ^
-"vmap <leader><leader>m $
-
-"nmap <leader>h H
-"nmap <leader>l L
-"nmap <leader>m M
-
-" 使更新 _vimrc 更容易
-nmap <leader>,s :source ~/.vimrc<CR>
-nmap <leader>,v :e ~/.vimrc
-" 译释：在normal模式下，先后按下 ,s 两个键执行_vimrc，而 ,v 则是编辑_vimrc
-map Y y$
-
-nnoremap <CR> Gzz
-vnoremap <CR> Gzz
-nnoremap <BS> gg
-
+" not sure about this
+noremap <leader>cn :cn<cr>
+noremap <leader>cp :cp<cr>
+noremap <leader>n :cn<cr>
 
 "vmap <Leader>y "+y
 "vmap <Leader>d "+d
@@ -94,41 +40,23 @@ nnoremap <BS> gg
 "nmap <Leader>P "+P
 "vmap <Leader>p "+p
 "vmap <Leader>P "+P
-vmap <Leader>cw cW
-vmap <Leader>dw dW
 
 "nmap <Leader><Leader> *
-nmap gw *
 
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
+"vnoremap <silent> y y`]
+"vnoremap <silent> p p`]
+"nnoremap <silent> p p`]
 
+"nmap ;' ysiw'
+"nmap ;" ysiw"
+"nmap ;( ysiw(
+"imap ;' <esc>ysiw'
+"imap ;" <esc>ysiw"
+"imap ;( <esc>ysiw(
+"vmap ' xi"<esc>pa"<esc>
+"vmap ( xi(<esc>pa)<esc>
 
-nnoremap <BS> gg
-nmap gr <Esc>:! clear;go run % <CR>
-nmap gb <Esc>:! clear;go build % <CR>
-nmap gi <Esc>:! clear;go install % <CR>
-nmap gf <Esc>:! clear;gofmt -w  % <CR>
-
-"2018-05-10 vim突破
-imap ;dw <esc>ldwi
-imap ;de <esc>ldei
-imap ;db <esc>ldbi
-imap ;b <esc>bi
-imap ;B <esc>Bi
-inoremap ;z <esc>ui
-inoremap ;u <esc>u
-inoremap ;r    <esc><C-r>i
-imap ;e <esc>ea
-imap ;w <esc>:w!<cr>
-imap jj <esc>
-imap ;E <esc>Ea
-imap ;f <esc>$a
-imap ;a <esc>^i
-imap ;p <esc>pa
-imap ;o <esc>o
-imap ;O <esc>O
+" to be done
 "imap ;j <esc><Plug>(easymotion-w)
 "imap ;k <esc><Plug>(easymotion-b)
 "nmap k <Plug>(easymotion-w)
@@ -141,30 +69,3 @@ imap ;O <esc>O
 "nmap <leader>l <Plug>(easymotion-k)
 "vmap j <Plug>(easymotion-j)
 "vmap k <Plug>(easymotion-k)
-nmap yq y^
-nmap yu y^
-nmap dq d^
-nmap du d^
-nmap dp d$
-nmap cp c$
-nmap cu c^
-vnoremap  <left>   <C-o>zz
-vnoremap <right>    <C-i>zz
-nnoremap  <left>   <C-o>zz
-nnoremap <right>    <C-i>zz
-noremap  <left>   <C-o>zz
-noremap <right>    <C-i>zz
-map <up>   g;
-map <down> g,
-nmap gp $
-nmap gu ^
-
-imap ;j <esc> :action KJumpAction.Word0<cr>
-imap ;k <esc> :action KJumpAction.Word0<cr>
-nmap j :action KJumpAction.Word0<cr>
-nmap k :action KJumpAction.Word0<cr>
-nmap <leader>l :action KJumpAction.Line<cr>
-
-"set surround
-
-".ideavimrc
