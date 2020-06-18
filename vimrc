@@ -1,108 +1,35 @@
-filetype on                   "检测文件类型
-filetype indent on           "针对不同的文件类型采用不同的缩进格式
-filetype plugin on           "允许插件
-filetype plugin indent on     "启动自动补全
+" import common config
+source ~/.commonvimrc
 
-set autoread 
-set ignorecase
-set smartcase
-set incsearch
-set ai
-set nu
-set relativenumber
-set ts=4
-set expandtab
-set mouse=a
-set ruler
-set smartindent
-set autoindent
-set nocompatible
-set backspace=indent,eol,start
-syntax on
+nmap <leader><leader>o    :NERDTreeToggle<CR>
+nmap <leader><leader>p    :TagbarToggle<CR>
+
+"" 使更新 _vimrc 更容易
+"nmap <leader>,s :source ~/.vimrc<CR>
+"nmap <leader>,v :e ~/.vimrc
+"" 译释：在normal模式下，先后按下 ,s 两个键执行_vimrc，而 ,v 则是编辑_vimrc
+"map Y y$
+
+"nnoremap <CR> Gzz
+"vnoremap <CR> Gzz
+"nnoremap <BS> gg
 
 
-let mapleader=" "
-nmap <leader>w    :w!<cr>
-vmap <leader>w    :w!<cr>
-nmap <leader>q    :q!<cr>
-vmap <leader>q    :q!<cr>
-nmap <leader>x    :x!<cr>
-vmap <leader>x    :x!<cr>
-nmap <leader>a    A
-vmap <leader>a    A
-nmap <leader>v    V
-vmap <leader>v    V
-nmap <leader>D    :read !date +\%Y-\%m-\%d<CR>
-nmap <leader>i  I
-nmap <leader>b  B
-nmap <leader>e  E
-vmap <leader>i  I
-vmap <leader>b  B
-noremap n nzz
-noremap N Nzz
+""vmap <Leader>y "+y
+""vmap <Leader>d "+d
+""nmap <Leader>p "+p
+""nmap <Leader>P "+P
+""vmap <Leader>p "+p
+""vmap <Leader>P "+P
+"vmap <Leader>cw cW
+"vmap <Leader>dw dW
 
-nmap <leader>r    <C-r>
-nmap <leader>u    <C-w>k
-nmap <leader>y    <C-w>j
-nmap <leader>l    <C-w>l
-nmap <leader>h    <C-w>h
-nmap <leader>m    :!clear: make<cr>
+""nmap <Leader><Leader> *
+"nmap gw *
 
-vnoremap  K  k 
-vnoremap J   j 
-nnoremap  K  k 
-nnoremap J   j 
-nnoremap <leader>k    <C-i>zz
-nnoremap <leader>j    <C-o>zz
-vnoremap <leader>k    <C-i>zz
-vnoremap <leader>j    <C-o>zz
-nmap <leader>o    :NERDTreeToggle<CR>
-nmap <leader>p    :TagbarToggle<CR>
-
-nmap fj    <C-f>
-nmap fk    <C-b>
-nmap gk    {zz
-nmap gj    }zz
-vmap fj    <C-f>zz
-vmap fk    <C-b>zz
-vmap gk    {zz
-vmap gj    }zz
-
-"nmap <leader><leader>h ^
-"nmap <leader><leader>m $
-"vmap <leader><leader>h ^
-"vmap <leader><leader>m $
-
-"nmap <leader>h H
-"nmap <leader>l L
-"nmap <leader>m M
-
-" 使更新 _vimrc 更容易
-nmap <leader>,s :source ~/.vimrc<CR>
-nmap <leader>,v :e ~/.vimrc
-" 译释：在normal模式下，先后按下 ,s 两个键执行_vimrc，而 ,v 则是编辑_vimrc
-map Y y$
-
-nnoremap <CR> Gzz
-vnoremap <CR> Gzz
-nnoremap <BS> gg
-
-
-"vmap <Leader>y "+y
-"vmap <Leader>d "+d
-"nmap <Leader>p "+p
-"nmap <Leader>P "+P
-"vmap <Leader>p "+p
-"vmap <Leader>P "+P
-vmap <Leader>cw cW
-vmap <Leader>dw dW
-
-"nmap <Leader><Leader> *
-nmap gw *
-
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
+"vnoremap <silent> y y`]
+"vnoremap <silent> p p`]
+"nnoremap <silent> p p`]
 
 
 nnoremap <BS> gg
@@ -123,8 +50,8 @@ map <F9> <Plug>MarkdownPreview
 map <F10> <Plug>StopMarkdownPreview
 map <F5> <Esc>:! clear;go run % <CR>
 map <F1> <Esc>:! clear;gofmt -w  % <CR>
-map <F8> :TagbarToggle<CR>
-map <F7> :NERDTreeToggle<CR>
+map <F8> :cn<CR>
+map <F7> :cp<CR>
 let g:tagbar_type_go = {
     \ 'ctagstype' : 'go',
     \ 'kinds'     : [
@@ -259,7 +186,7 @@ nnoremap <silent> <leader>. :cd %:p:h<CR>
 nnoremap gp `[v`]
 map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
-map <leader>sp :set nonu<cr> :set norelativenumber<cr> :set mouse-=a<cr><cr>
+map <leader>sp :set nonu<cr> :set norelativenumber<cr> :set mouse-=a<cr>
 map <leader>spn :set nu<cr> :set relativenumber<cr> :set mouse=<cr>
 
 "2018-05-10 vim突破
@@ -267,26 +194,61 @@ imap ;dw <esc>ldwi
 imap ;de <esc>ldei
 imap ;db <esc>ldbi
 imap ;b <esc>bi
-imap ;u <esc>ui
+imap ;B <esc>Bi
+inoremap ;z <esc>ui
+inoremap ;u <esc>u
+inoremap ;r    <esc><C-r>i
 imap ;e <esc>ea
-imap ;p <esc>$a
-imap ;u <esc>^i
-imap ;j <esc><Plug>(easymotion-)
-imap ;k <esc><Plug><Plug>(easymotion-b)
+imap ;E <esc>Ea
+imap ;f <esc>$a
+imap ;a <esc>^i
+imap ;p <esc>pa
+imap ;o <esc>o
+imap ;O <esc>O
+imap ;j <esc><Plug>(easymotion-w)
+imap ;k <esc><Plug>(easymotion-b)
+"nmap k <Plug>(easymotion-w)
+"nmap j <Plug>(easymotion-b)
+"vmap k <Plug>(easymotion-j)
+"vmap j <Plug>(easymotion-k)
 nmap j <Plug>(easymotion-w)
 nmap k <Plug>(easymotion-b)
+nmap <leader>h <Plug>(easymotion-j)
+nmap <leader>l <Plug>(easymotion-k)
 vmap j <Plug>(easymotion-j)
 vmap k <Plug>(easymotion-k)
+nmap yq d^
+nmap yu d^
 nmap dq d^
 nmap du d^
 nmap dp d$
-vnoremap  <left>   <C-i>zz
-vnoremap <right>    <C-o>zz
-nnoremap  <left>   <C-i>zz
-nnoremap <right>    <C-o>zz
-noremap  <left>   <C-i>zz
-noremap <right>    <C-o>zz
-map <up>   g; 
-map <down> g,
+nmap cp c$
+nmap cu c^
+vnoremap  <left>   <C-o>zz
+vnoremap <right>    <C-i>zz
+nnoremap  <left>   <C-o>zz
+nnoremap <right>    <C-i>zz
+noremap  <left>   <C-o>zz
+noremap <right>    <C-i>zz
+map <up>   <C-b> 
+map <down> <C-f>
 nmap gp $
 nmap gu ^
+"nnoremap m <Plug>(easymotion-w)
+"nnoremap q <Plug>(easymotion-b)
+"vnoremap m <Plug>(easymotion-j)
+"vnoremap q <Plug>(easymotion-k)
+
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+
+map <leader>u <Plug>(easymotion-linebackward)
+map <leader>p <Plug>(easymotion-lineforward)
+
+let g:EasyMotion_smartcase = 1
+"map  / <Plug>(easymotion-sn)
+"omap / <Plug>(easymotion-tn)
+"map  n <Plug>(easymotion-next)
+"map  N <Plug>(easymotion-prev)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
