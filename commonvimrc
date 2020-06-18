@@ -1,0 +1,157 @@
+" common config
+filetype on                   "检测文件类型
+filetype indent on           "针对不同的文件类型采用不同的缩进格式
+filetype plugin on           "允许插件
+filetype plugin indent on     "启动自动补全
+
+set autoread
+set ignorecase
+set smartcase
+set incsearch
+set ai
+set nu
+"set relativenumber
+set ts=4
+set expandtab
+set mouse=a
+set ruler
+set smartindent
+set autoindent
+set nocompatible
+set backspace=indent,eol,start
+syntax on
+
+
+let mapleader=" "
+
+" file saving
+nmap <leader>w    :w!<cr>
+vmap <leader>w    :w!<cr>
+nmap <leader>q    :q!<cr>
+vmap <leader>q    :q!<cr>
+nmap <leader>x    :x!<cr>
+vmap <leader>x    :x!<cr>
+
+
+" editing
+map Y y$
+nmap <leader>o    O
+nmap <leader>p    P
+nmap <Leader>yw yiW
+nmap <Leader>yb yiB
+nmap <Leader>yw yiW
+nmap <Leader>cw ciW
+nmap <Leader>cb ciB
+nmap <Leader>cw ciW
+nmap <Leader>dw diW
+nmap <Leader>db diB
+nmap <Leader>de diE
+nmap <leader>a    A
+vmap <leader>a    A
+nmap <leader>v    V
+vmap <leader>v    V
+nmap <leader>D    :read !date +\%Y-\%m-\%d<CR>
+nmap <leader>i  I
+nmap <leader>b  B
+nmap <leader>e  E
+vmap <leader>i  I
+vmap <leader>b  B
+noremap n nzz
+noremap N Nzz
+" moving in edit mode 
+"2018-05-10 vim突破
+imap ;dw <esc>ldwi
+imap ;de <esc>ldei
+imap ;db <esc>ldbi
+imap ;b <esc>bi
+imap ;B <esc>Bi
+inoremap ;z <esc>,i
+inoremap ;, <esc>,
+inoremap ;u <esc>uu
+inoremap ;r    <esc><C-r>i
+imap ;e <esc>ea
+imap ;E <esc>Ea
+imap ;f <esc>$a
+imap ;a <esc>^i
+imap ;p <esc>pa
+imap ;o <esc>o
+imap ;O <esc>O
+" escape from edit mode
+inoremap jj <ESC>
+" saving in edit mode
+inoremap ;q <esc>:q!<cr>
+inoremap ;w <esc>:w!<cr>
+inoremap ;x <esc>:x!<cr>
+" line jump/copy&paste/deletion/replace
+nmap gp $
+nmap gu ^
+nmap yp y$
+nmap yu y^
+nmap du d^
+nmap dp d$
+nmap cp c$
+nmap cu c^
+
+" undo & redo
+nmap <leader>r    <C-r>
+nmap Z <C-r>
+
+" switching windows
+nmap <leader>u    <C-w>k
+nmap <leader>y    <C-w>j
+nmap <leader>]    <C-w>l
+nmap <leader>[    <C-w>h
+
+" moving
+" moving up & down & left & right
+nnoremap <C-j>    j
+nnoremap <C-k>    k
+vnoremap <C-j>    j
+vnoremap <C-k>    k
+" moving forward & backward
+nnoremap <leader>k    <C-i>zz
+nnoremap <leader>j    <C-o>zz
+vnoremap <leader>k    <C-i>zz
+vnoremap <leader>j    <C-o>zz
+vnoremap  <left>   <C-o>zz
+vnoremap <right>    <C-i>zz
+nnoremap  <left>   <C-o>zz
+nnoremap <right>    <C-i>zz
+noremap  <left>   <C-o>zz
+noremap <right>    <C-i>zz
+" moving up & down a paragraph 
+nmap gk    {zz
+nmap gj    }zz
+vmap gk    {zz
+vmap gj    }zz
+" moving up & down a page
+nmap J <C-f>
+nmap K <C-b>
+vmap J <C-f>
+vmap K <C-b>
+nmap fj    <C-f>
+nmap fk    <C-b>
+vmap fj    <C-f>
+vmap fk    <C-b>
+" moving top & buttom
+nnoremap <BS> gg
+vnoremap <BS> gg
+nnoremap <CR> Gzz
+"vnoremap <CR> Gzz
+" book marking
+nnoremap <Leader>m  m
+" goto next same word
+nmap gw *
+" move to last edit
+map <up>   <C-b>
+map <down> <C-f>
+
+"windows split navigations
+"nnoremap <C-J> <C-W><C-J>
+"nnoremap <C-K> <C-W><C-K>
+"nnoremap <C-L> <C-W><C-L>
+"nnoremap <C-H> <C-W><C-H>
+" easymotion 
+map <leader>u <Plug>(easymotion-linebackward)                                                                                                                       
+map <leader>p <Plug>(easymotion-lineforward)
+
